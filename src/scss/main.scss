@@ -1,0 +1,277 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter";
+}
+
+body {
+  background-color: #051D3B;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  max-width: 1376px;
+  height: 56px;
+  margin: 32px auto 40px auto;
+}
+  
+.alura_logo {
+  width: 145px;
+  cursor: pointer;
+}
+
+.search_input {
+  width: 752px;
+  height: 56px;
+  padding: 16px;
+  border-radius: 8px;
+  margin-left: 167px;
+  margin-right: 206px;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.16);
+} 
+
+.profile {
+  display: flex;
+  align-items: center;
+  
+  &__photo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+  
+  &__name {
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
+
+.container {
+  display: flex;
+  max-width: 1376px;
+  margin: 40px auto 32px auto;
+}
+
+.menu {
+  color: #fff;
+  width: 189px;
+
+  &__title {
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  &__code_editor {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    cursor: pointer;
+    
+    &__image {
+      margin-right: 16px;
+      height: 48px;
+    }
+  }
+  
+  &__community {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+    &__image {
+      margin-right: 16px;
+      height: 48px;
+    }
+  }
+}
+
+.code_editor {
+  display: none;
+}
+
+.code {
+  width: 752px;
+  margin-left: 123px;
+  margin-right: 40px;
+  display: flex;
+  flex-direction: column;
+  
+  &__main {
+    width: 752px;
+    height: 366px;
+    background-color: #6BD1FF;
+    border-radius: 8px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1s;
+
+    &__black {
+      width: 688px;
+      height: 302px;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      border-radius: 8px;
+      background-color: rgba(20, 20, 20, 1);
+
+      &__image {
+        width: 52px;
+        height: 12px;
+        margin-bottom: 24px;
+      }
+
+      &__input {
+        display: block;
+        max-height: 234px;
+        padding: 16px;
+        color: #fff;
+        border-radius: 8px;
+        background-color: rgba(20, 20, 20, 1);;
+        white-space: pre-wrap;
+        outline: none;
+      }
+    }
+  }
+
+    &__button {
+      width: 752px;
+      height: 56px;
+      padding: 16px 0;
+      background-color: rgba(80, 129, 251, 0.08);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+}
+
+.details {
+  width: 272px;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    width: 100%;
+
+    &__project {
+      margin-bottom: 16px;
+      font-weight: normal;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    &__project_name {
+      border: none;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.16);
+      outline: none;
+    }
+    
+    &__project_description {
+      resize: none;
+      border: none;
+      border-radius: 8px;
+      height: 80x;
+      padding: 16px;
+      margin-bottom: 40px;
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.16);
+      outline: none;
+    }
+
+    &__personalization {
+      margin-bottom: 16px;
+      font-weight: normal;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    &__stack_selection {
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      padding: 16px 14px;
+      margin-bottom: 16px;
+      outline: none;
+      background: rgba(255, 255, 255, 0.16);
+      cursor: pointer;
+
+      option {
+        color: #000;
+      }
+    }
+
+    &__color_selection {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 56px;
+      margin-bottom: 40px;
+      border: 1px solid #fff;
+      border-radius: 8px;
+      background-color: transparent;
+
+      &__input {
+        width: 100%;
+        height: 40px;
+        margin: 8px;
+        border: none;
+        border-radius: 8px;
+        outline: none;
+        background-color: transparent;
+        cursor: pointer;
+      }
+    }
+
+    &__button {
+      padding: 16px 0;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #5081FB;
+      cursor: pointer;
+    }
+  }
+}
+
+.community {
+  display: none;
+  
+  &__card {
+    margin-left: 123px;
+  }
+}
+
+.active-code_editor {
+  display: contents;
+}
+
+.active-community {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}

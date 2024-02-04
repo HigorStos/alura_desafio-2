@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AluraDev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/css/dracula.css">
+  <link rel="stylesheet" href="./src/scss/main.scss">
+  <link rel="stylesheet" href="./src/scss/mobile.scss">
+  <link rel="stylesheet" href="./src/scss/tablet.scss">
+</head>
+<body>
+  <header class="header">
+    <img class="alura_logo" src="./src/image/logo.png" alt="Logo AluraDev">
+    <input class="search_input" type="text" placeholder="Busque por algo">
+    <div class="profile">
+      <img class="profile__photo" src="./src/image/profile_photo.jpg" alt="Foto de perfil">
+      <span class="profile__name">Higor</span>
+    </div>
+  </header>
+  <div class="container">
+    <div class="menu">
+      <h5 class="menu__title">Menu</h5>
+      <div class="menu__code_editor">
+        <img class="menu__code_editor__image" src="./src/image/code_editor_icon-on.png" alt="Ícone de desenvolvimento">
+        <p class="menu__code_editor__name">Editor de código</p>
+      </div>
+      <a class="menu__community">
+        <img class="menu__community__image" src="./src/image/community_icon-off.png" alt="Ícone de comunidade">
+        <p class="menu__community__name">Comunidade</p>
+      </a>
+    </div>
+    <div class="code_editor active-code_editor">
+      <div class="code">
+        <div class="code__main">
+          <div class="code__main__black">
+            <img class="code__main__black__image" src="./src/image/mac_buttons.svg" alt="Mac buttons">
+              <code class="code__main__black__input" id="code-area" contenteditable="true"></code>
+          </div>
+        </div>
+        <button class="code__button">Visualizar com o highlight</button>
+      </div>
+      <div class="details">
+        <form class="details__form" action="">
+          <h5 class="details__form__project">Seu projeto</h5>
+          <input class="details__form__project_name" type="text" placeholder="Nome do seu projeto">
+          <textarea class="details__form__project_description" placeholder="Descrição do seu projeto"></textarea>
+          <h5 class="details__form__personalization">Personalização</h5>
+          <select class="details__form__stack_selection" id="stack-selection">
+            <option value="javascript" selected>JavaScript</option>
+            <option value="csharp">C#</option>
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+          </select>
+          <span class="details__form__color_selection">
+            <input class="details__form__color_selection__input" id="color-selector" type="color">
+          </span>
+          <button class="details__form__button" id="save-project">Salvar projeto</button>
+        </form>
+      </div>
+    </div>
+    <div class="community">
+      <div class="community__card">
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="./src/js/script.js"></script>
+</body>
+</html>

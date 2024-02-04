@@ -1,0 +1,77 @@
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 32px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+  .alura_logo {
+    margin-top: 15vh;
+  }
+  .search_input {
+    width: 80vw;
+    margin: 0;
+  }
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 32px;
+    margin-top: 40px;
+  }
+  .menu {
+    width: 80vw;
+    margin: 64px 32px 8px 32px;
+  }
+  .menu__code_editor__name {
+    margin: 0 auto;
+    margin-left: 0;
+  }
+  .menu__code_editor__image {
+    margin: 0 auto;
+    margin-right: 8px;
+  }
+  .menu__community__name {
+    margin: 0 auto;
+    margin-left: 0;
+  }
+  .menu__community__image {
+    margin: 0 auto;
+    margin-right: 8px;
+  }
+  .code {
+    width: 80vw;
+    margin: 0 32px;
+  }
+  .code__form__main {
+    width: 80vw;
+    height: 440px;
+    margin: 40px 0 20px 0;
+  }
+  .code__form__main__black {
+    width: 73vw;
+    height: 420px;
+  }
+  .code__form__main__black__image {
+    width: 25px;
+    height: 6px;
+    margin-bottom: 16px;
+  }
+  .code__form__main__black__input {
+    width: 62vw;
+    height: 396px;
+  }
+  .code__form__button {
+    width: 80vw;
+    margin-bottom: 40px;
+  }
+  .details {
+    width: 80vw;
+    margin-bottom: 15vh;
+  }
+}
+
+/*# sourceMappingURL=/mobile.22c177d9.css.map */
