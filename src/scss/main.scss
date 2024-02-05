@@ -12,13 +12,14 @@ body {
 .header {
   display: flex;
   align-items: center;
-  max-width: 1376px;
+  width: 1376px;
   height: 56px;
   margin: 32px auto 40px auto;
 }
   
 .alura_logo {
   width: 145px;
+  margin-right: 167px;
   cursor: pointer;
 }
 
@@ -27,8 +28,6 @@ body {
   height: 56px;
   padding: 16px;
   border-radius: 8px;
-  margin-left: 167px;
-  margin-right: 206px;
   border: none;
   outline: none;
   color: #fff;
@@ -39,6 +38,7 @@ body {
 .profile {
   display: flex;
   align-items: center;
+  margin-left: 206px;
   
   &__photo {
     width: 32px;
@@ -136,9 +136,10 @@ body {
         margin-bottom: 24px;
       }
 
-      &__input {
+      &__area {
         display: block;
-        max-height: 234px;
+        max-height: 100%;
+        overflow-y: auto;
         padding: 16px;
         color: #fff;
         border-radius: 8px;
@@ -276,7 +277,6 @@ body {
       height: 288px;
       border-radius: 8px;
       padding: 24px;
-      background-color: red;
 
       &__code {
         height: 100%;
@@ -292,7 +292,10 @@ body {
 
         &__area {
           width: 100%;
+          max-height: 200px;
           margin-top: 240px;
+          white-space: pre-wrap;
+          overflow-y: auto;
         }
       }
     }
@@ -324,20 +327,28 @@ body {
       &__social {
         display: flex;
         align-items: center;
-        text-align: center;
-        justify-content: center;
         margin-left: 24px;
+        
+        &__comments {
+          display: flex;
+          align-items: center;
+          padding: 8px;
+          gap: 8px;
+
+          &__image {
+            cursor: pointer;
+          }
+        }
         
         &__likes {
           display: flex;
           align-items: center;
-          text-align: center;
-          justify-content: center;
-          margin: 0;
-        }
-
-        &__comments {
-          background-color: red;
+          padding: 8px;
+          gap: 8px;
+          
+          &__image {
+            cursor: pointer;
+          }
         }
       }
       

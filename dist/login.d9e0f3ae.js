@@ -117,94 +117,49 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"src/js/script.js":[function(require,module,exports) {
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-var codeEditorBt = document.querySelector('.menu__code_editor');
-var communityBt = document.querySelector('.menu__community');
-var codeEditorImg = document.querySelector('.menu__code_editor__image');
-var communityImg = document.querySelector('.menu__community__image');
-var codeEditorSection = document.querySelector('.code_editor');
-var communitySection = document.querySelector('.community');
-var codeArea = document.querySelector('#code-area');
-var highlightButton = document.querySelector('.code__button');
-var saveButton = document.querySelector('#save-project');
-var language = document.querySelector('#stack-selection');
-var background = document.querySelector('#color-selector');
-var projectCodeBg = document.querySelector('.code__main');
-var projectName = document.querySelector('.details__form__project_name');
-var projectDescription = document.querySelector('.details__form__project_description');
-var community = document.querySelector('.community');
-var profileName = document.querySelector('.profile__name');
-var postCard = [{
-  code: '',
-  name: '',
-  description: '',
-  background: '',
-  profile: {
-    name: profileName.innerText
-  },
-  social: {
-    comments: 0,
-    likes: 0
-  }
-}];
-codeEditorBt.addEventListener('click', function () {
-  codeEditorImg.setAttribute('src', 'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/code_editor_icon-on.png?raw=true');
-  communityImg.setAttribute('src', 'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/community_icon-off.png?raw=true');
-  communitySection.classList.remove('active-community');
-  codeEditorSection.classList.add('active-code_editor');
-  codeArea.removeAttribute('data-highlighted');
-  codeArea.innerText = '';
-  projectCodeBg.style.background = '#6BD1FF';
-});
-communityBt.addEventListener('click', function () {
-  codeEditorImg.setAttribute('src', 'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/code_editor_icon-off.png?raw=true');
-  communityImg.setAttribute('src', 'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/community_icon-on.png?raw=true');
-  codeEditorSection.classList.remove('active-code_editor');
-  communitySection.classList.add('active-community');
-  cardsMap();
-});
-highlightButton.addEventListener('click', function () {
-  var _codeArea$classList;
-  codeArea.removeAttribute('data-highlighted');
-  (_codeArea$classList = codeArea.classList).remove.apply(_codeArea$classList, _toConsumableArray(codeArea.classList));
-  codeArea.classList.add('code__main__black__area');
-  setTimeout(function () {
-    codeArea.classList.add("".concat(language.value));
-    hljs.highlightElement(codeArea);
-  }, 200);
-});
-saveButton.addEventListener('click', function (e) {
-  e.preventDefault();
-  var bgColor = background.value;
-  projectCodeBg.style.backgroundColor = bgColor;
-  var projectCodeCard = codeArea.innerHTML;
-  postCard = [].concat(_toConsumableArray(postCard), [{
-    code: projectCodeCard,
-    name: projectName.value,
-    description: projectDescription.value,
-    background: background.value,
-    profile: {
-      name: profileName.innerText
-    },
-    social: {
-      comments: 0,
-      likes: 0
+})({"src/js/login.js":[function(require,module,exports) {
+function login() {
+  swal({
+    text: 'Digite seu nome de usuário no Github',
+    content: 'input',
+    icon: 'Images/github_icon.svg',
+    button: {
+      text: 'Buscar'
     }
-  }]);
-  localStorage.setItem("cards", postCard);
-});
-function cardsMap() {
-  var cardsHtml = '';
-  postCard.slice(1).map(function (project) {
-    cardsHtml += "\n      <div class=\"community__card\">\n        <div class=\"community__card__bg\" style=\"background-color: ".concat(project.background, ";\">\n          <div class=\"community__card__bg__code\">\n            <img class=\"community__card__bg__code__image\" src=\"https://raw.githubusercontent.com/HigorStos/alura_desafio-2/bdb8f540592aa0d0d3a434acbf4f3b744ec3a41f/src/image/mac_buttons.svg\" alt=\"Mac buttons\">\n            <code class=\"community__card__bg__code__area\">\n              ").concat(project.code, "\n            </code>\n          </div>\n        </div>\n        <div class=\"community__card__content\">\n          <h5 class=\"community__card__content__title\">").concat(project.name, "</h5>\n          <p class=\"community__card__content__desc\">").concat(project.description, "</p>\n        </div>\n        <div class=\"community__card__infos\">\n          <div class=\"community__card__infos__social\">\n            <div class=\"community__card__infos__social__comments\">\n              <img class=\"community__card__infos__social__comments__image\" src=\"https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/comment_icon.png?raw=true\" alt=\"\xCDcone de coment\xE1rios\">\n              <span>").concat(project.social.comments, "</span>\n            </div>\n            <div class=\"community__card__infos__social__likes\">\n              <img class=\"community__card__infos__social__likes__image\" src=\"https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/like_icon.png?raw=true\" alt=\"\xCDcone de likes\">\n              <span class=\"community__card__infos__social__likes__counter\">").concat(project.social.likes, "</span>\n            </div>\n          </div>\n          <div class=\"community__card__infos__profile\">\n            <img src=\"https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/mr_robot.jpg?raw=true\" alt=\"Foto de perfil\">\n            <span>").concat(project.profile.name, "</span>\n          </div>\n        </div>\n      </div>\n    ");
+  }).then(function (user) {
+    if (!user) throw null;
+    return fetch("https://api.github.com/users/".concat(user));
+  }).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    if (data.message == 'Not Found') {
+      swal({
+        title: 'Usuário não encontrado',
+        icon: 'error'
+      });
+      throw new Error('Usuário inexistente');
+    }
+    var userInfo = {
+      userName: data.name,
+      userLink: data.html_url,
+      userImage: data.avatar_url
+    };
+    localStorage.setItem('user', JSON.stringify(userInfo));
+    location.reload();
   });
-  community.innerHTML = cardsHtml;
+}
+var userExists = JSON.parse(localStorage.getItem('user'));
+var userTag = document.querySelectorAll('.card__owner, .header__user, .user');
+var userLink = document.querySelectorAll('.user');
+if (userExists != null) {
+  userTag.forEach(function (elem) {
+    elem.innerHTML = "<img src=\"".concat(userExists.userImage, "\" class=\"header__user--photo\" style=\"height: 2rem; clip-path: circle();\"/>\n    <h1 class=\"header__user--name\" style=\"color:white;\">").concat(userExists.userName, "</h1>");
+  });
+  userTag.forEach(function (link) {
+    link.setAttribute('href', "".concat(userExists.userLink));
+    link.setAttribute('target', '_blank');
+    link.removeAttribute('onclick');
+  });
 }
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -231,7 +186,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62823" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62877" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
@@ -375,5 +330,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/js/script.js"], null)
-//# sourceMappingURL=/script.04c05cf5.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/js/login.js"], null)
+//# sourceMappingURL=/login.d9e0f3ae.js.map
