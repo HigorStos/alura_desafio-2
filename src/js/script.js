@@ -5,7 +5,7 @@ const communityImg = document.querySelector('.menu__community__image');
 const codeEditorSection = document.querySelector('.code_editor');
 const communitySection = document.querySelector('.community');
 const codeArea = document.querySelector('#code-area');
-const highlightButton = document.querySelector('.code__button')
+const highlightButton = document.querySelector('.code__button');
 const saveButton = document.querySelector('#save-project');
 const language = document.querySelector('#stack-selection');
 const background = document.querySelector('#color-selector');
@@ -13,23 +13,15 @@ const projectCodeBg = document.querySelector('.code__main');
 const projectName = document.querySelector('.details__form__project_name');
 const projectDescription = document.querySelector('.details__form__project_description');
 const community = document.querySelector('.community');
-const profileName = document.querySelector('.profile__name')
+const profileName = document.querySelector('.profile__name');
 
-let postCard = [
-  {
-    code: '',
-    name: '',
-    description: '',
-    background: '',
-    profile: {
-      name: profileName.innerText
-    },
-    social: {
-      comments: 0,
-      likes: 0
-    }
-  },
-];
+const localStoragePosts = JSON.parse(localStorage.getItem('cards'));
+
+let posts = localStorage.getItem('cards') !== null ? localStoragePosts : []
+
+const updateLocalStorage = () => {
+  localStorage.setItem('cards', JSON.stringify(posts))
+}
 
 codeEditorBt.addEventListener('click', () => {
   codeEditorImg.setAttribute(
@@ -43,10 +35,10 @@ codeEditorBt.addEventListener('click', () => {
 
   communitySection.classList.remove('active-community');
   codeEditorSection.classList.add('active-code_editor');
-  
-  codeArea.removeAttribute('data-highlighted')
-  codeArea.innerText = ''
-  projectCodeBg.style.background = '#6BD1FF'
+
+  codeArea.removeAttribute('data-highlighted');
+  codeArea.innerText = '';
+  projectCodeBg.style.background = '#6BD1FF';
 });
 
 communityBt.addEventListener('click', () => {
@@ -58,55 +50,49 @@ communityBt.addEventListener('click', () => {
     'src',
     'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/community_icon-on.png?raw=true'
   );
-  
+
   codeEditorSection.classList.remove('active-code_editor');
   communitySection.classList.add('active-community');
-  
+
   cardsMap();
 });
 
 highlightButton.addEventListener('click', () => {
-  codeArea.removeAttribute('data-highlighted')
-  codeArea.classList.remove(...codeArea.classList)
-  codeArea.classList.add('code__main__black__area')
-  
-  setTimeout(() => {
-    codeArea.classList.add(`${language.value}`);
-    hljs.highlightElement(codeArea);
-  }, 200)
-})
+  codeArea.removeAttribute('data-highlighted');
+  codeArea.classList.remove(...codeArea.classList);
+
+  codeArea.classList.add('code__main__black__area');
+  codeArea.classList.add(`${language.value}`)
+
+  hljs.highlightElement(codeArea)
+});
 
 saveButton.addEventListener('click', (e) => {
   e.preventDefault();
 
-  const bgColor = background.value;
-  projectCodeBg.style.backgroundColor = bgColor;
+  projectCodeBg.style.backgroundColor = background.value;
 
-  const projectCodeCard = codeArea.innerHTML;
-
-  postCard = [
-    ...postCard,
-    {
-      code: projectCodeCard,
-      name: projectName.value,
-      description: projectDescription.value,
-      background: background.value,
-      profile: {
-        name: profileName.innerText
-      },
-      social: {
-        comments: 0,
-        likes: 0
-      }
+  const newPost = {
+    code: codeArea.innerHTML,
+    name: projectName.value,
+    description: projectDescription.value,
+    background: background.value,
+    profile: {
+      name: profileName.innerText
     },
-  ];
+    social: {
+      comments: 0,
+      likes: 0
+    }
+  }
 
-  localStorage.setItem("cards", postCard);
+  posts.push(newPost);
+  updateLocalStorage();
 });
 
 function cardsMap() {
-  let cardsHtml = '';
-  postCard.slice(1).map((project) => {
+  let cardsHtml = ''
+  posts.map((project) => {
     cardsHtml += `
       <div class="community__card">
         <div class="community__card__bg" style="background-color: ${project.background};">
@@ -141,5 +127,5 @@ function cardsMap() {
     `;
   });
 
-  community.innerHTML = cardsHtml;
+  community.innerHTML = cardsHtml
 }

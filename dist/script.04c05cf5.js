@@ -140,19 +140,11 @@ var projectName = document.querySelector('.details__form__project_name');
 var projectDescription = document.querySelector('.details__form__project_description');
 var community = document.querySelector('.community');
 var profileName = document.querySelector('.profile__name');
-var postCard = [{
-  code: '',
-  name: '',
-  description: '',
-  background: '',
-  profile: {
-    name: profileName.innerText
-  },
-  social: {
-    comments: 0,
-    likes: 0
-  }
-}];
+var localStoragePosts = JSON.parse(localStorage.getItem('cards'));
+var posts = localStorage.getItem('cards') !== null ? localStoragePosts : [];
+var updateLocalStorage = function updateLocalStorage() {
+  localStorage.setItem('cards', JSON.stringify(posts));
+};
 codeEditorBt.addEventListener('click', function () {
   codeEditorImg.setAttribute('src', 'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/code_editor_icon-on.png?raw=true');
   communityImg.setAttribute('src', 'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/community_icon-off.png?raw=true');
@@ -174,18 +166,14 @@ highlightButton.addEventListener('click', function () {
   codeArea.removeAttribute('data-highlighted');
   (_codeArea$classList = codeArea.classList).remove.apply(_codeArea$classList, _toConsumableArray(codeArea.classList));
   codeArea.classList.add('code__main__black__area');
-  setTimeout(function () {
-    codeArea.classList.add("".concat(language.value));
-    hljs.highlightElement(codeArea);
-  }, 200);
+  codeArea.classList.add("".concat(language.value));
+  hljs.highlightElement(codeArea);
 });
 saveButton.addEventListener('click', function (e) {
   e.preventDefault();
-  var bgColor = background.value;
-  projectCodeBg.style.backgroundColor = bgColor;
-  var projectCodeCard = codeArea.innerHTML;
-  postCard = [].concat(_toConsumableArray(postCard), [{
-    code: projectCodeCard,
+  projectCodeBg.style.backgroundColor = background.value;
+  var newPost = {
+    code: codeArea.innerHTML,
     name: projectName.value,
     description: projectDescription.value,
     background: background.value,
@@ -196,12 +184,13 @@ saveButton.addEventListener('click', function (e) {
       comments: 0,
       likes: 0
     }
-  }]);
-  localStorage.setItem("cards", postCard);
+  };
+  posts.push(newPost);
+  updateLocalStorage();
 });
 function cardsMap() {
   var cardsHtml = '';
-  postCard.slice(1).map(function (project) {
+  posts.map(function (project) {
     cardsHtml += "\n      <div class=\"community__card\">\n        <div class=\"community__card__bg\" style=\"background-color: ".concat(project.background, ";\">\n          <div class=\"community__card__bg__code\">\n            <img class=\"community__card__bg__code__image\" src=\"https://raw.githubusercontent.com/HigorStos/alura_desafio-2/bdb8f540592aa0d0d3a434acbf4f3b744ec3a41f/src/image/mac_buttons.svg\" alt=\"Mac buttons\">\n            <code class=\"community__card__bg__code__area\">\n              ").concat(project.code, "\n            </code>\n          </div>\n        </div>\n        <div class=\"community__card__content\">\n          <h5 class=\"community__card__content__title\">").concat(project.name, "</h5>\n          <p class=\"community__card__content__desc\">").concat(project.description, "</p>\n        </div>\n        <div class=\"community__card__infos\">\n          <div class=\"community__card__infos__social\">\n            <div class=\"community__card__infos__social__comments\">\n              <img class=\"community__card__infos__social__comments__image\" src=\"https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/comment_icon.png?raw=true\" alt=\"\xCDcone de coment\xE1rios\">\n              <span>").concat(project.social.comments, "</span>\n            </div>\n            <div class=\"community__card__infos__social__likes\">\n              <img class=\"community__card__infos__social__likes__image\" src=\"https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/like_icon.png?raw=true\" alt=\"\xCDcone de likes\">\n              <span class=\"community__card__infos__social__likes__counter\">").concat(project.social.likes, "</span>\n            </div>\n          </div>\n          <div class=\"community__card__infos__profile\">\n            <img src=\"https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/mr_robot.jpg?raw=true\" alt=\"Foto de perfil\">\n            <span>").concat(project.profile.name, "</span>\n          </div>\n        </div>\n      </div>\n    ");
   });
   community.innerHTML = cardsHtml;
@@ -231,7 +220,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62823" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60498" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
