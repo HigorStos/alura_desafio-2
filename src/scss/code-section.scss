@@ -35,15 +35,14 @@
       }
 
       &__area {
-        display: block;
-        max-height: 100%;
-        overflow-y: auto;
         padding: 16px;
-        color: #fff;
         border-radius: 8px;
-        background-color: rgba(20, 20, 20, 1);;
+        display: block;
+        overflow-y: auto;
         white-space: pre-wrap;
         outline: none;
+        color: #fff;
+        background-color: rgba(20, 20, 20, 1);;
       }
     }
   }
