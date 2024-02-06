@@ -1,4 +1,4 @@
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .code {
     width: 343px;
     margin: 0;
@@ -6,27 +6,10 @@
     &__main {
       width: 343px;
       height: 492px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
 
       &__black {
         width: 279px;
         height: 428px;
-        display: flex;
-        flex-direction: column;
-
-        &__image {
-          width: 52px;
-          height: 12px;
-          margin-bottom: 24px;
-        }
-
-        &__area {
-          display: block;
-          max-height: 100%;
-          overflow-y: auto;
-        }
       }
     }
 

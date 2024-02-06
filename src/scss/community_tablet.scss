@@ -1,0 +1,82 @@
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .community {
+    &__card {
+      width: 704px;
+      height: 518px;
+      margin-bottom: 32px;
+
+      &__bg {
+        width: 704px;
+        height: 342px;
+        padding: 24px;
+
+        &__code {
+          width: 656px;
+          height: 294px;
+          padding: 12px;
+          font-size: 14px;
+          line-height: 18.46px;
+
+          &__area {
+            width: 624px;
+            height: 234px;
+          }
+        }
+      }
+
+      &__infos {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px, 24px, 24px, 24px;
+
+        &__social {
+          display: flex;
+          align-items: center;
+          margin-left: 24px;
+
+          &__comments {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            gap: 8px;
+
+            &__image {
+              cursor: pointer;
+            }
+          }
+
+          &__likes {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            gap: 8px;
+
+            &__image {
+              cursor: pointer;
+            }
+          }
+        }
+
+        &__profile {
+          display: flex;
+          align-items: center;
+          margin-right: 24px;
+
+          img {
+            width: 24px;
+            height: 24px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 8px;
+          }
+        }
+      }
+    }
+
+  }
+  
+  .active-community {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -1,9 +1,9 @@
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .community {
     &__card {
       width: 343px;
       height: 578px;
-      gap: 32px;
+      margin-bottom: 32px;
 
       &__bg {
         width: 343px;
@@ -16,12 +16,6 @@
           padding: 12px;
           font-size: 14px;
           line-height: 18.46px;
-
-          &__image {
-            width: 52px;
-            height: 12px;
-            margin-bottom: 12px;
-          }
 
           &__area {
             width: 271px;

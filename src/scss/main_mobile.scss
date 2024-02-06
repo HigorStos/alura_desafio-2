@@ -1,4 +1,4 @@
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   body {
     margin: 0 auto;
     padding: 16px;
@@ -24,6 +24,10 @@
         }
       }
     }
+
+    &--tablet {
+      display: none;
+    }
   }
     
   .alura_logo {
@@ -44,6 +48,10 @@
       display: flex;
       align-items: center;
       margin-top: 64px;
+    }
+
+    &--tablet {
+      display: none;
     }
   }
   

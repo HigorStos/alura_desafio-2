@@ -19,6 +19,10 @@ body {
   &--mobile {
     display: none;
   }
+
+  &--tablet {
+    display: none;
+  }
 }
   
 .alura_logo {
@@ -104,6 +108,10 @@ body {
   }
 
   &--mobile {
+    display: none;
+  }
+
+  &--tablet {
     display: none;
   }
 }

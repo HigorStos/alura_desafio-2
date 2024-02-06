@@ -1,7 +1,7 @@
-const codeEditorBt = document.querySelector('.menu__code_editor');
-const communityBt = document.querySelector('.menu__community');
-const codeEditorImg = document.querySelector('.menu__code_editor__image');
-const communityImg = document.querySelector('.menu__community__image');
+const codeEditorBt = document.querySelectorAll('.menu__code_editor');
+const communityBt = document.querySelectorAll('.menu__community');
+const codeEditorImg = document.querySelectorAll('.menu__code_editor__image');
+const communityImg = document.querySelectorAll('.menu__community__image');
 const codeEditorSection = document.querySelector('.code_editor');
 const communitySection = document.querySelector('.community');
 const codeArea = document.querySelector('#code-area');
@@ -14,7 +14,8 @@ const projectName = document.querySelector('.details__form__project_name');
 const projectDescription = document.querySelector('.details__form__project_description');
 const community = document.querySelector('.community');
 const profileName = document.querySelector('.profile__name');
-const menuHamburguer = document.querySelector('#menu-hamburguer')
+const menuHamburguerMobile = document.querySelector('#menu-hamburguer--mobile')
+const menuHamburguerTablet = document.querySelector('#menu-hamburguer--tablet')
 
 const localStoragePosts = JSON.parse(localStorage.getItem('cards'));
 
@@ -24,39 +25,43 @@ const updateLocalStorage = () => {
   localStorage.setItem('cards', JSON.stringify(posts))
 }
 
-codeEditorBt.addEventListener('click', () => {
-  codeEditorImg.setAttribute(
-    'src',
-    'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/code_editor_icon-on.png?raw=true'
-  );
-  communityImg.setAttribute(
-    'src',
-    'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/community_icon-off.png?raw=true'
-  );
+for (let i = 0; i < codeEditorBt.length; i++) {
+  codeEditorBt[i].addEventListener('click', () => {
+    codeEditorImg[i].setAttribute(
+      'src',
+      'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/code_editor_icon-on.png?raw=true'
+    );
+    communityImg[i].setAttribute(
+      'src',
+      'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/community_icon-off.png?raw=true'
+    );
+  
+    communitySection.classList.remove('active-community');
+    codeEditorSection.classList.add('active-code_editor');
+  
+    codeArea.removeAttribute('data-highlighted');
+    codeArea.innerText = '';
+    projectCodeBg.style.background = '#6BD1FF';
+  });
+}
 
-  communitySection.classList.remove('active-community');
-  codeEditorSection.classList.add('active-code_editor');
-
-  codeArea.removeAttribute('data-highlighted');
-  codeArea.innerText = '';
-  projectCodeBg.style.background = '#6BD1FF';
-});
-
-communityBt.addEventListener('click', () => {
-  codeEditorImg.setAttribute(
-    'src',
-    'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/code_editor_icon-off.png?raw=true'
-  );
-  communityImg.setAttribute(
-    'src',
-    'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/community_icon-on.png?raw=true'
-  );
-
-  codeEditorSection.classList.remove('active-code_editor');
-  communitySection.classList.add('active-community');
-
-  cardsMap();
-});
+for (let i = 0; i < communityBt.length; i++) {
+  communityBt[i].addEventListener('click', () => {
+    codeEditorImg[i].setAttribute(
+      'src',
+      'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/code_editor_icon-off.png?raw=true'
+    );
+    communityImg[i].setAttribute(
+      'src',
+      'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/community_icon-on.png?raw=true'
+    );
+  
+    codeEditorSection.classList.remove('active-code_editor');
+    communitySection.classList.add('active-community');
+  
+    cardsMap();
+  });
+}
 
 highlightButton.addEventListener('click', () => {
   codeArea.removeAttribute('data-highlighted');
@@ -75,6 +80,14 @@ colorInput.addEventListener('input', () => {
 saveButton.addEventListener('click', (e) => {
   e.preventDefault();
 
+  if(projectName.value === '') {
+    alert('Digite um nome para seu projeto!')
+    return;
+  } else if(projectDescription.value === '') {
+    alert('Digite uma descrição para seu projeto!')
+    return;
+  }
+
   const newPost = {
     code: codeArea.innerHTML,
     name: projectName.value,
@@ -91,6 +104,8 @@ saveButton.addEventListener('click', (e) => {
 
   posts.push(newPost);
   updateLocalStorage();
+
+  alert(`Projeto "${projectName.value}" salvo com sucesso!`)
 });
 
 function cardsMap() {
@@ -134,8 +149,18 @@ function cardsMap() {
   community.innerHTML = cardsHtml
 }
 
-menuHamburguer.addEventListener('click', () => {
+menuHamburguerMobile.addEventListener('click', () => {
   const menu = document.querySelector('.menu--mobile')
+
+  if(menu.style.display === "block") {
+    menu.style.display = "none"
+  } else {
+    menu.style.display = "block"
+  }
+})
+
+menuHamburguerTablet.addEventListener('click', () => {
+  const menu = document.querySelector('.menu--tablet')
 
   if(menu.style.display === "block") {
     menu.style.display = "none"

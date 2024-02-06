@@ -1,0 +1,41 @@
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .code {
+    width: 704px;
+    margin: 0;
+
+    &__main {
+      width: 704px;
+      height: 366px;
+
+      &__black {
+        width: 640px;
+        height: 302px;
+      }
+    }
+
+    &__button {
+      width: 704px;
+      height: 56px;
+      margin-bottom: 40px;
+    }
+  }
+
+  .details {
+    width: 704px;
+
+    &__form {
+      &__personalization {
+        &__div {
+          display: flex;
+          gap: 16px;
+        }
+      }
+
+      &__stack_selection,
+      &__color_selection {
+        width: 344px;
+        height: 56px;
+      }
+    }
+  }
+}

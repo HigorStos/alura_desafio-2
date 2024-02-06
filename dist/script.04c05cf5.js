@@ -124,10 +124,10 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-var codeEditorBt = document.querySelector('.menu__code_editor');
-var communityBt = document.querySelector('.menu__community');
-var codeEditorImg = document.querySelector('.menu__code_editor__image');
-var communityImg = document.querySelector('.menu__community__image');
+var codeEditorBt = document.querySelectorAll('.menu__code_editor');
+var communityBt = document.querySelectorAll('.menu__community');
+var codeEditorImg = document.querySelectorAll('.menu__code_editor__image');
+var communityImg = document.querySelectorAll('.menu__community__image');
 var codeEditorSection = document.querySelector('.code_editor');
 var communitySection = document.querySelector('.community');
 var codeArea = document.querySelector('#code-area');
@@ -140,28 +140,39 @@ var projectName = document.querySelector('.details__form__project_name');
 var projectDescription = document.querySelector('.details__form__project_description');
 var community = document.querySelector('.community');
 var profileName = document.querySelector('.profile__name');
-var menuHamburguer = document.querySelector('#menu-hamburguer');
+var menuHamburguerMobile = document.querySelector('#menu-hamburguer--mobile');
+var menuHamburguerTablet = document.querySelector('#menu-hamburguer--tablet');
 var localStoragePosts = JSON.parse(localStorage.getItem('cards'));
 var posts = localStorage.getItem('cards') !== null ? localStoragePosts : [];
 var updateLocalStorage = function updateLocalStorage() {
   localStorage.setItem('cards', JSON.stringify(posts));
 };
-codeEditorBt.addEventListener('click', function () {
-  codeEditorImg.setAttribute('src', 'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/code_editor_icon-on.png?raw=true');
-  communityImg.setAttribute('src', 'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/community_icon-off.png?raw=true');
-  communitySection.classList.remove('active-community');
-  codeEditorSection.classList.add('active-code_editor');
-  codeArea.removeAttribute('data-highlighted');
-  codeArea.innerText = '';
-  projectCodeBg.style.background = '#6BD1FF';
-});
-communityBt.addEventListener('click', function () {
-  codeEditorImg.setAttribute('src', 'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/code_editor_icon-off.png?raw=true');
-  communityImg.setAttribute('src', 'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/community_icon-on.png?raw=true');
-  codeEditorSection.classList.remove('active-code_editor');
-  communitySection.classList.add('active-community');
-  cardsMap();
-});
+var _loop = function _loop(i) {
+  codeEditorBt[i].addEventListener('click', function () {
+    codeEditorImg[i].setAttribute('src', 'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/code_editor_icon-on.png?raw=true');
+    communityImg[i].setAttribute('src', 'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/community_icon-off.png?raw=true');
+    communitySection.classList.remove('active-community');
+    codeEditorSection.classList.add('active-code_editor');
+    codeArea.removeAttribute('data-highlighted');
+    codeArea.innerText = '';
+    projectCodeBg.style.background = '#6BD1FF';
+  });
+};
+for (var i = 0; i < codeEditorBt.length; i++) {
+  _loop(i);
+}
+var _loop2 = function _loop2(_i) {
+  communityBt[_i].addEventListener('click', function () {
+    codeEditorImg[_i].setAttribute('src', 'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/code_editor_icon-off.png?raw=true');
+    communityImg[_i].setAttribute('src', 'https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/community_icon-on.png?raw=true');
+    codeEditorSection.classList.remove('active-code_editor');
+    communitySection.classList.add('active-community');
+    cardsMap();
+  });
+};
+for (var _i = 0; _i < communityBt.length; _i++) {
+  _loop2(_i);
+}
 highlightButton.addEventListener('click', function () {
   var _codeArea$classList;
   codeArea.removeAttribute('data-highlighted');
@@ -175,6 +186,13 @@ colorInput.addEventListener('input', function () {
 });
 saveButton.addEventListener('click', function (e) {
   e.preventDefault();
+  if (projectName.value === '') {
+    alert('Digite um nome para seu projeto!');
+    return;
+  } else if (projectDescription.value === '') {
+    alert('Digite uma descrição para seu projeto!');
+    return;
+  }
   var newPost = {
     code: codeArea.innerHTML,
     name: projectName.value,
@@ -190,6 +208,7 @@ saveButton.addEventListener('click', function (e) {
   };
   posts.push(newPost);
   updateLocalStorage();
+  alert("Projeto \"".concat(projectName.value, "\" salvo com sucesso!"));
 });
 function cardsMap() {
   var cardsHtml = '';
@@ -198,8 +217,16 @@ function cardsMap() {
   });
   community.innerHTML = cardsHtml;
 }
-menuHamburguer.addEventListener('click', function () {
+menuHamburguerMobile.addEventListener('click', function () {
   var menu = document.querySelector('.menu--mobile');
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "block";
+  }
+});
+menuHamburguerTablet.addEventListener('click', function () {
+  var menu = document.querySelector('.menu--tablet');
   if (menu.style.display === "block") {
     menu.style.display = "none";
   } else {
@@ -231,7 +258,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54996" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52701" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

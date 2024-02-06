@@ -19,6 +19,9 @@ body {
 .header--mobile {
   display: none;
 }
+.header--tablet {
+  display: none;
+}
 
 .alura_logo {
   width: 145px;
@@ -96,6 +99,9 @@ body {
   height: 48px;
 }
 .menu--mobile {
+  display: none;
+}
+.menu--tablet {
   display: none;
 }
 
