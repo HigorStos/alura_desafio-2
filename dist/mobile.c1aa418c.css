@@ -1,76 +1,114 @@
 @media screen and (max-width: 768px) {
-  .header {
-    padding: 32px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 56px;
-  }
-  .alura_logo {
-    margin-top: 15vh;
-  }
-  .search_input {
-    width: 80vw;
-    margin: 0;
-  }
   .container {
+    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 32px;
-    margin-top: 40px;
   }
   .menu {
-    width: 80vw;
-    margin: 64px 32px 8px 32px;
-  }
-  .menu__code_editor__name {
-    margin: 0 auto;
-    margin-left: 0;
-  }
-  .menu__code_editor__image {
-    margin: 0 auto;
-    margin-right: 8px;
-  }
-  .menu__community__name {
-    margin: 0 auto;
-    margin-left: 0;
-  }
-  .menu__community__image {
-    margin: 0 auto;
-    margin-right: 8px;
+    display: none;
   }
   .code {
-    width: 80vw;
-    margin: 0 32px;
+    margin: 0;
   }
-  .code__form__main {
-    width: 80vw;
-    height: 440px;
-    margin: 40px 0 20px 0;
+  .code__main {
+    width: 343px;
+    height: 492px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .code__form__main__black {
-    width: 73vw;
-    height: 420px;
+  .code__main__black {
+    width: 279px;
+    height: 428px;
+    display: flex;
+    flex-direction: column;
   }
-  .code__form__main__black__image {
-    width: 25px;
-    height: 6px;
-    margin-bottom: 16px;
+  .code__main__black__image {
+    width: 52px;
+    height: 12px;
+    margin-bottom: 24px;
   }
-  .code__form__main__black__input {
-    width: 62vw;
-    height: 396px;
+  .code__main__black__area {
+    display: block;
+    max-height: 100%;
+    overflow-y: auto;
   }
-  .code__form__button {
-    width: 80vw;
+  .code__button {
+    width: 343px;
+    height: 56px;
     margin-bottom: 40px;
   }
   .details {
-    width: 80vw;
-    margin-bottom: 15vh;
+    width: 343px;
+  }
+  .community__card {
+    width: 343px;
+    height: 578px;
+    gap: 32px;
+  }
+  .community__card__bg {
+    width: 343px;
+    height: 402px;
+    padding: 24px;
+  }
+  .community__card__bg__code {
+    width: 295px;
+    height: 354px;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 18.46px;
+  }
+  .community__card__bg__code__image {
+    width: 52px;
+    height: 12px;
+    margin-bottom: 12px;
+  }
+  .community__card__bg__code__area {
+    width: 271px;
+    height: 306px;
+  }
+  .community__card__infos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px, 24px, 24px, 24px;
+  }
+  .community__card__infos__social {
+    display: flex;
+    align-items: center;
+    margin-left: 24px;
+  }
+  .community__card__infos__social__comments {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    gap: 8px;
+  }
+  .community__card__infos__social__comments__image {
+    cursor: pointer;
+  }
+  .community__card__infos__social__likes {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    gap: 8px;
+  }
+  .community__card__infos__social__likes__image {
+    cursor: pointer;
+  }
+  .community__card__infos__profile {
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+  }
+  .community__card__infos__profile img {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  .community .active-community {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 

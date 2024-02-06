@@ -9,9 +9,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./src/css/dracula.css">
+  
   <link rel="stylesheet" href="./src/scss/main.scss">
-  <link rel="stylesheet" href="./src/scss/mobile.scss">
-  <link rel="stylesheet" href="./src/scss/tablet.scss">
+  <link rel="stylesheet" href="./src/scss/main_mobile.scss">
+  <link rel="stylesheet" href="./src/scss/main_tablet.scss">
+
+  <link rel="stylesheet" href="./src/scss/code-section.scss">
+  <link rel="stylesheet" href="./src/scss/code-section_mobile.scss">
+  <link rel="stylesheet" href="./src/scss/code-section_tablet.scss">
+
+  <link rel="stylesheet" href="./src/scss/community.scss">
+  <link rel="stylesheet" href="./src/scss/community_mobile.scss">
+  <link rel="stylesheet" href="./src/scss/community_tablet.scss">
 </head>
 
 <body>
@@ -23,6 +32,29 @@
       <span class="profile__name">Dev</span>
     </div>
   </header>
+
+  <header class="header--mobile">
+    <img class="alura_logo" src="./src/image/logo.png" alt="Logo AluraDev">
+    <nav class="header--mobile__nav">
+      <img src="./src/image/search_icon.png" alt="Ícone de busca">
+      <img id="menu-hamburguer" src="./src/image/menu_icon.png" alt="Ícone de menu">
+    </nav>
+  </header>
+  <div class="menu--mobile">
+    <div class="menu__code_editor">
+      <img class="menu__code_editor__image" src="./src/image/code_editor_icon-on.png" alt="Ícone de desenvolvimento">
+      <p class="menu__code_editor__name">Editor de código</p>
+    </div>
+    <div class="menu__community">
+      <img class="menu__community__image" src="./src/image/community_icon-off.png" alt="Ícone de comunidade">
+      <p class="menu__community__name">Comunidade</p>
+    </div>
+    <div class="profile--mobile">
+      <img class="profile__photo" src="./src/image/mr_robot.jpg" alt="Foto de perfil">
+      <span class="profile__name">Dev</span>
+    </div>
+  </div>
+
   <div class="container">
     <div class="menu">
       <h5 class="menu__title">Menu</h5>
@@ -30,10 +62,10 @@
         <img class="menu__code_editor__image" src="./src/image/code_editor_icon-on.png" alt="Ícone de desenvolvimento">
         <p class="menu__code_editor__name">Editor de código</p>
       </div>
-      <a class="menu__community">
+      <div class="menu__community">
         <img class="menu__community__image" src="./src/image/community_icon-off.png" alt="Ícone de comunidade">
         <p class="menu__community__name">Comunidade</p>
-      </a>
+      </div>
     </div>
     <div class="code_editor active-code_editor">
       <div class="code">

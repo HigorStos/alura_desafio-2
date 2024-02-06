@@ -8,17 +8,17 @@ const codeArea = document.querySelector('#code-area');
 const highlightButton = document.querySelector('.code__button');
 const saveButton = document.querySelector('#save-project');
 const language = document.querySelector('#stack-selection');
-const background = document.querySelector('#color-selector');
+const colorInput = document.querySelector('#color-selector');
 const projectCodeBg = document.querySelector('.code__main');
 const projectName = document.querySelector('.details__form__project_name');
 const projectDescription = document.querySelector('.details__form__project_description');
 const community = document.querySelector('.community');
 const profileName = document.querySelector('.profile__name');
+const menuHamburguer = document.querySelector('#menu-hamburguer')
 
 const localStoragePosts = JSON.parse(localStorage.getItem('cards'));
 
 let posts = localStorage.getItem('cards') !== null ? localStoragePosts : []
-let cardsHtml = ''
 
 const updateLocalStorage = () => {
   localStorage.setItem('cards', JSON.stringify(posts))
@@ -68,16 +68,18 @@ highlightButton.addEventListener('click', () => {
   hljs.highlightElement(codeArea)
 });
 
+colorInput.addEventListener('input', () => {
+  projectCodeBg.style.backgroundColor = colorInput.value;
+})
+
 saveButton.addEventListener('click', (e) => {
   e.preventDefault();
-
-  projectCodeBg.style.backgroundColor = background.value;
 
   const newPost = {
     code: codeArea.innerHTML,
     name: projectName.value,
     description: projectDescription.value,
-    background: background.value,
+    background: colorInput.value,
     profile: {
       name: profileName.innerText
     },
@@ -92,6 +94,8 @@ saveButton.addEventListener('click', (e) => {
 });
 
 function cardsMap() {
+  let cardsHtml = ''
+
   posts.map((project) => {
     cardsHtml += `
       <div class="community__card">
@@ -129,3 +133,13 @@ function cardsMap() {
 
   community.innerHTML = cardsHtml
 }
+
+menuHamburguer.addEventListener('click', () => {
+  const menu = document.querySelector('.menu--mobile')
+
+  if(menu.style.display === "block") {
+    menu.style.display = "none"
+  } else {
+    menu.style.display = "block"
+  }
+})

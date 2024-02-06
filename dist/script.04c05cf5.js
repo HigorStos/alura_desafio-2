@@ -134,15 +134,15 @@ var codeArea = document.querySelector('#code-area');
 var highlightButton = document.querySelector('.code__button');
 var saveButton = document.querySelector('#save-project');
 var language = document.querySelector('#stack-selection');
-var background = document.querySelector('#color-selector');
+var colorInput = document.querySelector('#color-selector');
 var projectCodeBg = document.querySelector('.code__main');
 var projectName = document.querySelector('.details__form__project_name');
 var projectDescription = document.querySelector('.details__form__project_description');
 var community = document.querySelector('.community');
 var profileName = document.querySelector('.profile__name');
+var menuHamburguer = document.querySelector('#menu-hamburguer');
 var localStoragePosts = JSON.parse(localStorage.getItem('cards'));
 var posts = localStorage.getItem('cards') !== null ? localStoragePosts : [];
-var cardsHtml = '';
 var updateLocalStorage = function updateLocalStorage() {
   localStorage.setItem('cards', JSON.stringify(posts));
 };
@@ -170,14 +170,16 @@ highlightButton.addEventListener('click', function () {
   codeArea.classList.add("".concat(language.value));
   hljs.highlightElement(codeArea);
 });
+colorInput.addEventListener('input', function () {
+  projectCodeBg.style.backgroundColor = colorInput.value;
+});
 saveButton.addEventListener('click', function (e) {
   e.preventDefault();
-  projectCodeBg.style.backgroundColor = background.value;
   var newPost = {
     code: codeArea.innerHTML,
     name: projectName.value,
     description: projectDescription.value,
-    background: background.value,
+    background: colorInput.value,
     profile: {
       name: profileName.innerText
     },
@@ -190,11 +192,20 @@ saveButton.addEventListener('click', function (e) {
   updateLocalStorage();
 });
 function cardsMap() {
+  var cardsHtml = '';
   posts.map(function (project) {
     cardsHtml += "\n      <div class=\"community__card\">\n        <div class=\"community__card__bg\" style=\"background-color: ".concat(project.background, ";\">\n          <div class=\"community__card__bg__code\">\n            <img class=\"community__card__bg__code__image\" src=\"https://raw.githubusercontent.com/HigorStos/alura_desafio-2/bdb8f540592aa0d0d3a434acbf4f3b744ec3a41f/src/image/mac_buttons.svg\" alt=\"Mac buttons\">\n            <code class=\"community__card__bg__code__area\">\n              ").concat(project.code, "\n            </code>\n          </div>\n        </div>\n        <div class=\"community__card__content\">\n          <h5 class=\"community__card__content__title\">").concat(project.name, "</h5>\n          <p class=\"community__card__content__desc\">").concat(project.description, "</p>\n        </div>\n        <div class=\"community__card__infos\">\n          <div class=\"community__card__infos__social\">\n            <div class=\"community__card__infos__social__comments\">\n              <img class=\"community__card__infos__social__comments__image\" src=\"https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/comment_icon.png?raw=true\" alt=\"\xCDcone de coment\xE1rios\">\n              <span>").concat(project.social.comments, "</span>\n            </div>\n            <div class=\"community__card__infos__social__likes\">\n              <img class=\"community__card__infos__social__likes__image\" src=\"https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/like_icon.png?raw=true\" alt=\"\xCDcone de likes\">\n              <span class=\"community__card__infos__social__likes__counter\">").concat(project.social.likes, "</span>\n            </div>\n          </div>\n          <div class=\"community__card__infos__profile\">\n            <img src=\"https://github.com/HigorStos/alura_desafio-2/blob/main/src/image/mr_robot.jpg?raw=true\" alt=\"Foto de perfil\">\n            <span>").concat(project.profile.name, "</span>\n          </div>\n        </div>\n      </div>\n    ");
   });
   community.innerHTML = cardsHtml;
 }
+menuHamburguer.addEventListener('click', function () {
+  var menu = document.querySelector('.menu--mobile');
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "block";
+  }
+});
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -220,7 +231,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64358" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52701" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
