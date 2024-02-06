@@ -18,6 +18,7 @@ const profileName = document.querySelector('.profile__name');
 const localStoragePosts = JSON.parse(localStorage.getItem('cards'));
 
 let posts = localStorage.getItem('cards') !== null ? localStoragePosts : []
+let cardsHtml = ''
 
 const updateLocalStorage = () => {
   localStorage.setItem('cards', JSON.stringify(posts))
@@ -91,7 +92,6 @@ saveButton.addEventListener('click', (e) => {
 });
 
 function cardsMap() {
-  let cardsHtml = ''
   posts.map((project) => {
     cardsHtml += `
       <div class="community__card">
