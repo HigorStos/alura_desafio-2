@@ -1,4 +1,9 @@
 @media screen and (max-width: 768px) {
+  body {
+    margin: 0 auto;
+    padding: 16px;
+  }
+
   .header {
     display: none;
 
@@ -6,6 +11,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin: 0 auto;
       width: 343px;
       
       &__nav {
@@ -44,6 +50,8 @@
   .container {
     display: flex;
     flex-direction: column;
+    width: 343px;
+    margin: 40px auto;
   }
 
   .menu {
